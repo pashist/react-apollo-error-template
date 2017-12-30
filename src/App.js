@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 
 class App extends Component {
   render() {
-    const { data: { loading, people } } = this.props;
+    const { data: { loading, graphQLHub } } = this.props;
     return (
       <main>
         <header>
@@ -28,7 +28,7 @@ class App extends Component {
           <p>Loading…</p>
         ) : (
           <ul>
-            {people.map(person => <li key={person.id}>{person.name}</li>)}
+            {<code>{graphQLHub}</code>}
           </ul>
         )}
       </main>
@@ -38,11 +38,8 @@ class App extends Component {
 
 export default graphql(
   gql`
-    query ErrorTemplate {
-      people {
-        id
-        name
-      }
+    query {
+      graphQLHub
     }
   `
 )(App);
